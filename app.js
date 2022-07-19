@@ -19,8 +19,11 @@ const callMe = (sta) => {
         
     })
 }
+app.get('/', (req, res) => {
+    res.send('hell is working')
+})
 
-callMe("https://youtu.be/dXjKh66BR2U");
+// callMe("https://youtu.be/dXjKh66BR2U");
 
 app.post('/ytUrl', async (req, res) => {
     const url = await req.body.url;
