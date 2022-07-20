@@ -3,6 +3,7 @@ const cors = require('cors')
 const app = express();
 
 const scrapeUrl = require('./index')
+const port = process.env.PORT || 5000;
 
 app.use(express.json())
 
@@ -42,4 +43,4 @@ app.get('*', (req, res) => {
 
 
 
-app.listen(process.env.PORT || 5000, () => { console.log  ('backend is running at port 80') });
+app.listen(port, () => { console.log  (`backend is running at ${port}`) });
