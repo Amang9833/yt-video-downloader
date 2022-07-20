@@ -9,7 +9,9 @@ module.exports = async function scrapeUrl(userUrl) {
   // let yt_url = "https://youtu.be/dXjKh66BR2U";
   let yt_url = userUrl;
 
-  const browser = await puppeteer.launch({ headless: true }); // launch the browser
+  const browser = await puppeteer.launch({
+    ignoreDefaultArgs: ["--disable-extensions"],
+  }); // launch the browser
   const page = await browser.newPage(); // create a new instance
   await page.goto(url, { waitUntil: "domcontentloaded" }); // get into that website
 
@@ -26,7 +28,7 @@ module.exports = async function scrapeUrl(userUrl) {
   // console.log("3 clicked the button");
 
   //page to convert the yt to downloadeable file
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(5000);
 
   await page.click("[id='btn-action']");
   await page.waitForTimeout(2000);
