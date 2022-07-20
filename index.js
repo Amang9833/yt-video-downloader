@@ -11,6 +11,11 @@ module.exports = async function scrapeUrl(userUrl) {
 
   const browser = await puppeteer.launch({
     ignoreDefaultArgs: ["--disable-extensions"],
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
   }); // launch the browser
   const page = await browser.newPage(); // create a new instance
   await page.goto(url, { waitUntil: "domcontentloaded" }); // get into that website
