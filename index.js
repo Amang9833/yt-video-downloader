@@ -8,7 +8,6 @@ let answer;
 module.exports = async function scrapeUrl(userUrl) {
   // let yt_url = "https://youtu.be/dXjKh66BR2U";
   let yt_url = userUrl;
-  // let yt_url = userUrl;
 
   const browser = await puppeteer.launch({ headless: true }); // launch the browser
   const page = await browser.newPage(); // create a new instance

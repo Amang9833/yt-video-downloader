@@ -10,16 +10,16 @@ app.use(express.json())
 
 app.use(cors())
 
-const callMe = (sta) => {
+// const callMe = (sta) => {
     
-    app.get('/api',async (req, res) => {
-        let data = await scrapeUrl();
-        console.log('get method -> ', data)
-        console.log(sta)
-        res.send(`<a href=${data}>click me to download</a>`)
+//     app.get('/api',async (req, res) => {
+//         let data = await scrapeUrl();
+//         console.log('get method -> ', data)
+//         console.log(sta)
+//         res.send(`<a href=${data}>click me to download</a>`)
         
-    })
-}
+//     })
+// }
 app.get('/api', (req, res) => {
     res.send('hell is working')
 })
@@ -28,6 +28,10 @@ app.get('/api', (req, res) => {
 
 app.post('/ytUrl', async (req, res) => {
     const url = await req.body.url;
+    let size = url.length;
+    if (size <= 8) {
+        res.send('invalid youtube link')
+    }
     let toDelviery =  await scrapeUrl(url);
     // callMe(toDelviery);
 //    res.status(200).send(`<a href=${toDelviery}>click me to download</a>`);
@@ -35,11 +39,13 @@ app.post('/ytUrl', async (req, res) => {
 
 })
 
+app.get('/favicon.ico', (req, res) => {
+    res.send('maa chuda')
+});
+
 app.get('*', (req, res) => {
     res.send('Wrong page Url')
 })
-
-
 
 
 
