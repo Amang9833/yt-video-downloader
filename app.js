@@ -11,7 +11,7 @@ app.use(cors())
 
 const callMe = (sta) => {
     
-    app.get('/',async (req, res) => {
+    app.get('/api',async (req, res) => {
         let data = await scrapeUrl();
         console.log('get method -> ', data)
         console.log(sta)
@@ -19,7 +19,7 @@ const callMe = (sta) => {
         
     })
 }
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('hell is working')
 })
 
@@ -34,8 +34,12 @@ app.post('/ytUrl', async (req, res) => {
 
 })
 
+app.get('*', (req, res) => {
+    res.send('Wrong page Url')
+})
 
 
 
 
-app.listen(80 || process.env.PORT, () => { console.log('backend is running at port 80') });
+
+app.listen(process.env.PORT || 5000, () => { console.log  ('backend is running at port 80') });
