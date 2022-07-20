@@ -38,4 +38,4 @@ app.post('/ytUrl', async (req, res) => {
 
 
 
-app.listen(80 || Process.env.PORT, () => { console.log('backend is running at port 80') });
+app.listen(80 || process.env.PORT, () => { console.log('backend is running at port 80') });
