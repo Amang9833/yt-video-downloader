@@ -40,7 +40,7 @@ app.post('/ytUrl', async (req, res) => {
 })
 
 app.get('/favicon.ico', (req, res) => {
-    res.send('maa chuda')
+    res.send('')
 });
 
 app.get('*', (req, res) => {
